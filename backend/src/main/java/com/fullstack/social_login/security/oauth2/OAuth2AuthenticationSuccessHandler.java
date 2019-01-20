@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.fullstack.social_login.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
@@ -61,7 +63,18 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
         String targetUrl = redirectUri.orElse(getDefaultTargetUrl());
 
+
+        System.out.println("targetUrl: " + targetUrl);
+
         String token = tokenProvider.createToken(authentication);
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("token", token);
+        logger.info(authentication.getAuthorities());
+        System.out.println("getDetails: " + authentication.getDetails());
+        System.out.println("getCredentials: " + authentication.getCredentials());
+        System.out.println("getAuthorities: " + authentication.getAuthorities().iterator().next());
+
 
         return UriComponentsBuilder.fromUriString(targetUrl)
                 .queryParam("token", token)

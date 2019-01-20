@@ -21,6 +21,9 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    @Column
+    private String role = "ROLE_USER";
+
     private String imageUrl;
 
     @Column(nullable = false)
@@ -34,6 +37,14 @@ public class User {
     private AuthProvider provider;
 
     private String providerId;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
