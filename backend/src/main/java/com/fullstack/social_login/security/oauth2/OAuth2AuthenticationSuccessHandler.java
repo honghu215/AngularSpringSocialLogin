@@ -2,8 +2,11 @@ package com.fullstack.social_login.security.oauth2;
 
 import com.fullstack.social_login.config.AppProperties;
 import com.fullstack.social_login.exception.BadRequestException;
+import com.fullstack.social_login.model.User;
+import com.fullstack.social_login.repository.UserRepository;
 import com.fullstack.social_login.security.TokenProvider;
 import com.fullstack.social_login.util.CookieUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -24,6 +27,9 @@ import static com.fullstack.social_login.security.oauth2.HttpCookieOAuth2Authori
 
 @Component
 public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+
+    @Autowired
+    private UserRepository userRepository;
 
     private TokenProvider tokenProvider;
 
@@ -62,19 +68,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         }
 
         String targetUrl = redirectUri.orElse(getDefaultTargetUrl());
-
-
-        System.out.println("targetUrl: " + targetUrl);
-
         String token = tokenProvider.createToken(authentication);
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("token", token);
-        logger.info(authentication.getAuthorities());
-        System.out.println("getDetails: " + authentication.getDetails());
-        System.out.println("getCredentials: " + authentication.getCredentials());
-        System.out.println("getAuthorities: " + authentication.getAuthorities().iterator().next());
-
 
         return UriComponentsBuilder.fromUriString(targetUrl)
                 .queryParam("token", token)
