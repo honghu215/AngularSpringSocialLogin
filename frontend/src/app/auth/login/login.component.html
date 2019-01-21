@@ -1,0 +1,23 @@
+<!-- <div *ngIf="isLoggedIn && openSnackBar('You already logged in.', '')"; else loggedOut">
+</div> -->
+
+<section>
+  
+  <app-social></app-social>
+  
+  <form 
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input type="email" matInput placeholder="Input your email" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="password" matInput placeholder="Enter your password" formControlName="password">
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</section>
