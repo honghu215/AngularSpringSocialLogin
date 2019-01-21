@@ -67,6 +67,8 @@ public class AuthController {
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
 
+        user.setRole("ROLE_USER");
+        
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User result = userRepository.save(user);
 

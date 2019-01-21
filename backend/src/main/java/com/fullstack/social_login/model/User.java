@@ -22,11 +22,11 @@ public class User {
     private String email;
 
     @Column
-    private String role = "ROLE_USER";
+    private String role;
 
     private String imageUrl;
 
-    @Column(nullable = false)
+    @Column
     private Boolean emailVerified = false;
 
     @JsonIgnore
