@@ -20,14 +20,16 @@ export class OAuth2RedirectHandlerComponent implements OnInit {
     ngOnInit() {
         this.token = this.route.snapshot.queryParamMap.get('token');
         this.error = this.route.snapshot.queryParamMap.get('error');
-        if (this.token !== '') {
+        if (this.token !== null) {
             console.log(this.token);
             this.authService.authChange.next(true);
             this.tokenStorage.saveToken(this.token);
             this.userService.saveUserProfile();
+            this.router.navigate(['/welcome']);
         } else {
-            console.log(this.error);
+            console.log('Social login failed: ', this.error);
+            this.authService.authChange.next(false);
+            this.router.navigate(['/login']);
         }
-        this.router.navigate(['/welcome']);
     }
 }

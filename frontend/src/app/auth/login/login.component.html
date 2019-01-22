@@ -1,23 +1,43 @@
 <!-- <div *ngIf="isLoggedIn && openSnackBar('You already logged in.', '')"; else loggedOut">
 </div> -->
 
-<section>
-  
-  <app-social></app-social>
-  
-  <form 
-    fxLayout="column"
-    fxLayoutAlign="center center"
-    fxLayoutGap="10px"
-    [formGroup]="loginForm"
-    (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <input type="email" matInput placeholder="Input your email" formControlName="email">
-  </mat-form-field>
+<div class="login-page">
+  <!-- <br>
+  <h4>Queens College Community</h4>
+  <br><br>
 
-  <mat-form-field>
-    <input type="password" matInput placeholder="Enter your password" formControlName="password">
-  </mat-form-field>
-  <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
-  </form>
-</section>
+  <h2>Login or Singup to continue</h2>
+  <h6>Join over 5,000 students to become the member of the college community</h6>
+  <br><br> -->
+
+
+  <div class="login-panel" fxLayout="column" fxLayoutAlign="center center">
+
+
+    <div>
+      <div fxLayout="row" fxLayoutAlign="center center" >
+        <!-- Social Login -->
+        <div fxFlex class="social-login">
+          <app-social></app-social>
+        </div>
+
+        <div class="login-form" fxFlex="350px 300px">
+          <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <input type="email" matInput placeholder="Input your email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Enter your password" formControlName="password">
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayoutAlign="center center" style="background-color:antiquewhite; text-align: center center; width: 560px; height: 40px">
+      I agree to the <a href="#"><b>Code of Conduct</b></a>, <a href="#"><b>terms of use </b></a>and <a href="#"><b>privacy policy</b></a>.
+    </div>
+
+  </div>
+</div>

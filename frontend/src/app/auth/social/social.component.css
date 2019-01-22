@@ -1,15 +1,70 @@
 
+  a {
+      background-color: white;
+      color: white;
+      margin-bottom: 10px;
+  }
+  .auth-social-buttons-pane {
+    /* float: right; */
+    width: 260px;
+    height: 280px;
+    background: #f2f5fc;
+    padding: 20px;
+    /* margin: -20px -20px -20px 0; */
+    border-top-left-radius: 6px; }
+
+
+  .auth-social-button {
+    width: 100%;
+    text-align: left;
+    /* margin: 0 0 10px 0; */
+    height: 28px;
+    /* box-shadow: 0 4px 10px rgba(16, 6, 94, 0.075);
+    transition: box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); */
+    border-radius: 2px; 
+}
+.auth-social-button:hover {
+      box-shadow: 0 6px 6px #FFF;
+      /* box-shadow: 0 6px 6px rgba(16, 6, 94, 0.125);  */
+}
+.auth-social-button .auth-social-button-icon {
+      width: 28px;
+      height: 28px;
+      background-color: rgb(179, 180, 185);
+      background-size: 40%; }
+.auth-social-button .auth-social-button-text {
+      display: block;
+      /* margin-left: 3px; */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 15px;
+      height: 28px;
+      line-height: 28px;
+      /* background: #FFF; */
+      color: #333; 
+      padding: 0 0 0 15px;
+}
+
+
+
+/* a.auth-social-button.google {
+    background: blue;
+    padding-right: 10px;
+} */
+      
+
+/* 
 .social-btn {
     margin-bottom: 15px;
     font-weight: 400;
     font-size: 16px;
-    width: 300px;
+    width: 200px;
 }
 
 .social-btn img {
     height: 32px;
     float: left;
-    margin-top: 10px;
 }
 
 .social-btn.google {
@@ -29,7 +84,7 @@
 .signup-link {
     color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
-}
+} */
 /* 
 .login-title {
     font-size: 1.5em;

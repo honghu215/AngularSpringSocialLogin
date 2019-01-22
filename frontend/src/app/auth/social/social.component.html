@@ -1,15 +1,38 @@
-<section class="social-login" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
-  <a class="btn btn-block social-btn google" href="{{ GOOGLE_AUTH_URL }}" style="text-align:center">
-    <img src="assets/img/google-logo.png" alt="Google" /> Log in with Google
-  </a>
+<!-- <section class="social-login" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+  
+  <button class="btn btn-block social-btn google" >
+    <div><img src="assets/img/google-logo.png" alt="Google" /></div>
+    <div>Login with Google</div>
+  </button>
 
   <a class="btn btn-block social-btn facebook" href="{{FACEBOOK_AUTH_URL}}" style="text-align:center">
-    <img src="assets/img/fb-logo.png" alt="Facebook" /> Log in with Facebook
+    <img class="auth0-social-button-icon" src="assets/img/fb-logo.png" alt="Facebook" />Log in with Facebook
   </a>
 
   <a class="btn btn-block social-btn github" href="{{GITHUB_AUTH_URL}}" style="text-align:center">
-    <img src="assets/img/github-logo.png" alt="Github" /> Log in with Github
+    <img src="assets/img/github-logo.png" alt="Github" />Log in with Github  
   </a>
 
 
-</section>
+</section> -->
+
+<div class="auth-social-buttons-pane">
+
+  <div class="auth-social-buttons-container">
+
+    <a href="{{GOOGLE_AUTH_URL}}" class="auth-social-button google" fxLayout="row" style="background-color:white;">
+      <img class="auth-social-button-icon" src="assets/img/google-logo.png" alt="Google">
+      <span class="auth-social-button-text">Continue with Google</span>
+    </a>
+    
+    <a href="{{FACEBOOK_AUTH_URL}}" class="auth-social-button facebook" fxLayout="row" style="background-color:white;">
+      <img class="auth-social-button-icon" src="assets/img/fb-logo.png" alt="Facebook">
+      <span class="auth-social-button-text">Continue with Facebook</span>
+    </a>
+    <a href="{{GITHUB_AUTH_URL}}" class="auth-social-button github" fxLayout="row" style="background-color:white;">
+      <img class="auth-social-button-icon" src="assets/img/github-logo.png" alt="Github">
+      <span class="auth-social-button-text">Continue with Github</span>
+    </a>
+
+  </div>
+</div>
