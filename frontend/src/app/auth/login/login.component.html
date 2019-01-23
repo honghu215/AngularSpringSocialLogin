@@ -1,14 +1,14 @@
 <!-- <div *ngIf="isLoggedIn && openSnackBar('You already logged in.', '')"; else loggedOut">
 </div> -->
 
-<div class="login-page">
-  <!-- <br>
+<div class="login-page" >
+  <br>
   <h4>Queens College Community</h4>
   <br><br>
 
-  <h2>Login or Singup to continue</h2>
+  <h1>Login or Singup to continue</h1>
   <h6>Join over 5,000 students to become the member of the college community</h6>
-  <br><br> -->
+  <br><br>
 
 
   <div class="login-panel" fxLayout="column" fxLayoutAlign="center center">
@@ -21,7 +21,7 @@
           <app-social></app-social>
         </div>
 
-        <div class="login-form" fxFlex="350px 300px">
+        <div class="login-form">
           <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field>
               <input type="email" matInput placeholder="Input your email" formControlName="email">

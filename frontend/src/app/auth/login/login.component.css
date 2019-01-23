@@ -1,10 +1,14 @@
 .login-page {
     background-color: rgb(109, 54, 238);
-    height: auto;
+    height: 100%;
+    min-height: 100vh;
+    text-align: center;
+
 }
 
+
 body {
-    height: auto;
+    height: 100%;
 }
 
 mat-form-field {
