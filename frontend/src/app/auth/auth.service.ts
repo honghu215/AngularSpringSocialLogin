@@ -17,6 +17,7 @@ const httpOptions = {
 export class AuthService {
     authChange = new Subject<boolean>();
     baseUrl = 'http://localhost:8080';
+    authError = new Subject<string>();
 
     constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {}
 

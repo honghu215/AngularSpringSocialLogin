@@ -18,6 +18,7 @@ export class UserService {
                 this.tokenStorage.saveUsername(data.name);
                 this.tokenStorage.saveEmail(data.email);
                 this.tokenStorage.saveAuthority(data.role);
+                this.tokenStorage.saveImageUrl(data.imageUrl);
             },
             error => {
                 console.log(error);

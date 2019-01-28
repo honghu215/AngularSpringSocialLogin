@@ -6,7 +6,7 @@ const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
 const AUTHORITIES_KEY = 'AuthAuthorities';
 const EMAIL_KEY = 'UserEmail';
-
+const IMAGE_URL = 'ImageURL';
 @Injectable({
     providedIn: 'root'
 })
@@ -48,5 +48,14 @@ export class TokenStorageService {
 
     public getAuthority(): string {
         return sessionStorage.getItem(AUTHORITIES_KEY);
+    }
+
+    public saveImageUrl(url: string) {
+        window.sessionStorage.removeItem(IMAGE_URL);
+        window.sessionStorage.setItem(IMAGE_URL, url);
+    }
+
+    public getImageUrl(): string {
+        return sessionStorage.getItem(IMAGE_URL);
     }
 }
