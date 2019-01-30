@@ -17,22 +17,22 @@ spring:
       client:
         registration:
           google:
-            clientId: clientId
-            clientSecret: clientSecret
+            clientId: 362666077538-oeq3cs4d8ug469toeop1tktbgkent9vp.apps.googleusercontent.com
+            clientSecret: RhJwBxHgq-MxZIQPGytDlBvd
             redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
             scope:
             - email
             - profile
           facebook:
-            clientId: clientId
-            clientSecret: clientSecret
+            clientId: 340458466794023
+            clientSecret: f6e0906182123c21344a4034b7e84ded
             redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
             scope:
             - email
             - public_profile
           github:
-            clientId: clientId
-            clientSecret: clientSecret
+            clientId: Iv1.ee6016a484772cb6
+            clientSecret: 094a82e6528c9613066d28edb01c11067a908f49
             redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
             scope:
             - user:email
@@ -48,4 +48,4 @@ app:
     tokenExpirationMsec: 864000000
   oauth2:
     authorizedRedirectUris:
-    - http://localhost:4200/oauth2/redirect
+    - http://localhost:3000/oauth2/redirect

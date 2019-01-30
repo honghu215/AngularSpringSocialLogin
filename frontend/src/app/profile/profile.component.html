@@ -1,0 +1,15 @@
+<div class="profile-container">
+  <div class="container">
+    <div class="profile-info">
+      <div class="profile-avatar">
+        <div *ngIf="imageUrl">
+          <img [src]="imageUrl" [alt]="name">
+        </div>
+        <div *ngIf="!imageUrl" class="text-avatar">
+          <h2>{{ name }}</h2>
+        </div>
+        <p class="profile-email">{{ email }}</p>
+      </div>
+    </div>
+  </div>
+</div>

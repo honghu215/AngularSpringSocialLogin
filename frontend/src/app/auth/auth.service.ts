@@ -16,6 +16,7 @@ const httpOptions = {
 
 export class AuthService {
     authChange = new Subject<boolean>();
+    // baseUrl = 'http://qcalumni.eastus.cloudapp.azure.com';
     baseUrl = 'http://localhost:8080';
     authError = new Subject<string>();
 

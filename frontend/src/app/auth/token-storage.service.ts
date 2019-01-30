@@ -41,6 +41,10 @@ export class TokenStorageService {
         window.sessionStorage.setItem(EMAIL_KEY, email);
     }
 
+    public getEmail(): string {
+        return sessionStorage.getItem(EMAIL_KEY);
+    }
+
     public saveAuthority(role: string) {
         window.sessionStorage.removeItem(AUTHORITIES_KEY);
         window.sessionStorage.setItem(AUTHORITIES_KEY, role);

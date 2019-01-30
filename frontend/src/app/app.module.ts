@@ -21,6 +21,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { SnackBarComponent } from './utils/snack-bar/snack-bar.component';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     HeaderComponent,
     SidenavComponent,
     SnackBarComponent,
-    OAuth2RedirectHandlerComponent
+    OAuth2RedirectHandlerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

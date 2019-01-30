@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { OAuth2RedirectHandlerComponent } from './auth/social/OAuth2RedirectHandler';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
     { path: 'oauth2/redirect', component: OAuth2RedirectHandlerComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'welcome', component: WelcomeComponent }
+    { path: 'welcome', component: WelcomeComponent },
+    { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

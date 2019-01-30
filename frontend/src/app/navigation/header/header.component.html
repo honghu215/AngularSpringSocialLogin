@@ -5,6 +5,11 @@
 
   <div fxFlex fxLayout fxLayoutAlign="flex-end">
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+
+      <li *ngIf="isAuthenticated">
+        <a routerLink="/profile">Profile</a>
+      </li>
+
       <li *ngIf="!isAuthenticated">
         <a routerLink="/signup">SignUp</a>
       </li>
