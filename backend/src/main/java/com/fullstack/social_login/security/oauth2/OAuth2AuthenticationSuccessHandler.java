@@ -2,8 +2,7 @@ package com.fullstack.social_login.security.oauth2;
 
 import com.fullstack.social_login.config.AppProperties;
 import com.fullstack.social_login.exception.BadRequestException;
-import com.fullstack.social_login.model.User;
-import com.fullstack.social_login.repository.UserRepository;
+import com.fullstack.social_login.mapper.UserMapper;
 import com.fullstack.social_login.security.TokenProvider;
 import com.fullstack.social_login.util.CookieUtils;
 
@@ -13,14 +12,13 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 import static com.fullstack.social_login.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
@@ -28,8 +26,10 @@ import static com.fullstack.social_login.security.oauth2.HttpCookieOAuth2Authori
 @Component
 public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
+    @Resource
+    private UserMapper userMapper;
 
     private TokenProvider tokenProvider;
 

@@ -2,38 +2,38 @@ package com.fullstack.social_login.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "email")})
+//@Entity
+//@Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "email")})
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String name;
 
-    @Email
-    @Column(nullable = false)
+//    @Email
+//    @Column(nullable = false)
     private String email;
 
-    @Column
+//    @Column
     private String role;
 
     private String imageUrl;
 
-    @Column
+//    @Column
     private Boolean emailVerified = false;
 
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
+//    @NotNull
+//    @Enumerated(EnumType.STRING)
     private AuthProvider provider;
 
     private String providerId;

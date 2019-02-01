@@ -14,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_list">
-        id, name, email, password, role, imageUrl, provider
+        id, name, email, password, role, imageUrl, provider, providerId, emailVerified
     </sql>
 
     <select id="getAllUsers" resultMap="BaseResultMap">
@@ -23,7 +23,29 @@
         FROM users
     </select>
 
-    <select id="findByEmail" parameterType="java.lang.String" >
-
+    <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users
+        WHERE id = #{ id }
     </select>
+
+    <select id="findByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM users
+      WHERE email = #{ email }
+    </select>
+
+    <select id="existsByEmail" parameterType="java.lang.String">
+        SELECT
+        EXISTS( SELECT 1 FROM users WHERE email = #{ email })
+    </select>
+
+    <insert id="save" parameterType="com.fullstack.social_login.model.User">
+        INSERT INTO
+        users(id, name, email, role, imageUrl, emailVerified, password, provider, providerId)
+        VALUES(#{id}, #{name}, #{email}, #{role}, #{imageUrl}, #{emailVerified}, #{password}, #{provider}, #{providerId})
+    </insert>
+
 </mapper>

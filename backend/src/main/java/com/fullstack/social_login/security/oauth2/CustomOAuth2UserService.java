@@ -1,16 +1,15 @@
 package com.fullstack.social_login.security.oauth2;
 
 import com.fullstack.social_login.exception.OAuth2AuthenticationProcessingException;
+import com.fullstack.social_login.mapper.UserMapper;
 import com.fullstack.social_login.model.AuthProvider;
 import com.fullstack.social_login.model.User;
-import com.fullstack.social_login.repository.UserRepository;
 import com.fullstack.social_login.security.UserPrincipal;
 import com.fullstack.social_login.security.oauth2.user.OAuth2UserInfo;
 import com.fullstack.social_login.security.oauth2.user.OAuth2UserInfoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -18,13 +17,17 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.Optional;
 
 @Service
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
+
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -45,7 +48,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             throw new OAuth2AuthenticationProcessingException("Email not found from OAuth2 provider");
         }
 
-        Optional<User> userOptional = userRepository.findByEmail(oAuth2UserInfo.getEmail());
+        Optional<User> userOptional = userMapper.findByEmail(oAuth2UserInfo.getEmail());
         User user;
         if (userOptional.isPresent()) {
             user = userOptional.get();
@@ -72,13 +75,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
         user.setEmailVerified((Boolean)oAuth2UserInfo.getAttributes().get("email_verified"));
-        return userRepository.save(user);
+        return userMapper.save(user);
     }
 
     private User updateExistingUser(User existingUser, OAuth2UserInfo  oAuth2UserInfo) {
         existingUser.setName(oAuth2UserInfo.getName());
         existingUser.setImageUrl(oAuth2UserInfo.getImageUrl());
         existingUser.setEmailVerified((Boolean)oAuth2UserInfo.getAttributes().get("email_verified"));
-        return userRepository.save(existingUser);
+        return userMapper.save(existingUser);
     }
 }

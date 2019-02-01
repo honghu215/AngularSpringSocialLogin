@@ -1,13 +1,13 @@
 package com.fullstack.social_login.controller;
 
 
+import com.fullstack.social_login.mapper.UserMapper;
 import com.fullstack.social_login.model.AuthProvider;
 import com.fullstack.social_login.model.User;
 import com.fullstack.social_login.payload.ApiResponse;
 import com.fullstack.social_login.payload.AuthResponse;
 import com.fullstack.social_login.payload.LoginRequest;
 import com.fullstack.social_login.payload.SignUpRequest;
-import com.fullstack.social_login.repository.UserRepository;
 import com.fullstack.social_login.security.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.net.URI;
 
@@ -33,14 +34,17 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private UserRepository userRepository;
+//    @Autowired
+//    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private TokenProvider tokenProvider;
+
+    @Resource
+    private UserMapper userMapper;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -57,7 +61,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (userMapper.existsByEmail(signUpRequest.getEmail())) {
             throw new BadCredentialsException("Email address already in use.");
         }
 
@@ -70,7 +74,7 @@ public class AuthController {
         user.setRole("ROLE_USER");
         
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User result = userRepository.save(user);
+        User result = userMapper.save(user);
 
         URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/me")
                 .buildAndExpand(result.getId()).toUri();
